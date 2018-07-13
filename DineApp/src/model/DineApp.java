@@ -20,7 +20,7 @@ public class DineApp {
 	
 	public DineApp() {
 		this.mainWindow = new MainWindow();
-		MainWindow.changeFont(this.mainWindow);
+		//MainWindow.changeFont(this.mainWindow);
 		this.mainWindow.revalidate();
 	}
 	
@@ -38,6 +38,17 @@ public class DineApp {
 	
 	
 	public static void main(String[] args) {
+		
+		try {
+			MainWindow.font = Font.createFont(Font.TRUETYPE_FONT, new File("./data/fonts/Montserrat-Regular.ttf")).deriveFont(12f); 
+			GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			genv.registerFont(MainWindow.font);
+			
+		} catch (FontFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); // stavlja windows okruzenje
 		} catch (ClassNotFoundException e1) {
@@ -54,15 +65,7 @@ public class DineApp {
 			e1.printStackTrace();
 		}
 		
-		try {
-			MainWindow.font = Font.createFont(Font.TRUETYPE_FONT, new File("./data/fonts/Montserrat-Regular.ttf")).deriveFont(12f); 
-			GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			genv.registerFont(MainWindow.font);
-			
-		} catch (FontFormatException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
 		
 		DineApp.getInstance();
