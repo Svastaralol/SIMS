@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Recepat {
+public class Recepat implements Serializable {
 	
 	 private String naziv;
 	 private String uputstvo;
@@ -60,9 +61,16 @@ public class Recepat {
 	public void setDatumObjave(Date datumObjave) {
 		this.datumObjave = datumObjave;
 	}
-	
-	
-	 
-	 
 
+	public List<Sastojak> getNamirnice() {
+		return namirnice;
+	}
+
+	public void setNamirnice(List<Sastojak> namirnice) {
+		this.namirnice = namirnice;
+	}
+	
+	public String toString() {
+		return this.naziv + ", " + this.uputstvo + ", " + this.namirnice;
+	}
 }

@@ -5,22 +5,33 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+import model.DineApp;
+import model.Namirnica;
+import model.Recepat;
+import model.Sastojak;
+
 
 @SuppressWarnings("serial")
 public class KreiranjeRecepta extends JFrame {
 	private int width = 400;
-	private int height = 410;
+	private int height = 500;
 	
 	private JPanel container;
 	private JPanel topLayer;
@@ -36,7 +47,8 @@ public class KreiranjeRecepta extends JFrame {
 		//super(new FlowLayout(FlowLayout.LEFT));
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setResizable(false);
-		this.setBounds(MainWindow.screenWidth/2 - width/2, MainWindow.screenHeight/2 - height/2, width, height);
+		this.setSize(width, height);
+		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		
 		
@@ -112,7 +124,41 @@ public class KreiranjeRecepta extends JFrame {
 		
 		KreiranjeRecepta r = this;
 		
-		
+		confirmButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (nazivRecepta.getText().isEmpty() || opis.getText().isEmpty() || glavneNamirnice.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Sva polja moraju biti popunjena, sem opcionih namirnica", "Unos recepta", NORMAL);
+				} else {
+					Recepat r = new Recepat();
+					List<Sastojak> sastojci = new ArrayList<>();
+					String[] split = glavneNamirnice.getText().split(",");
+					for(int i = 0; i < split.length; i++) {
+						Sastojak s = new Sastojak();
+						s.setKolicina(1);
+						s.setNamirnica(new Namirnica(split[i]));
+						sastojci.add(s);
+					}
+					r.setNamirnice(sastojci);
+					r.setDatumObjave(new Date());
+					r.setNaziv(nazivRecepta.getText());
+					r.setUputstvo(opis.getText());
+					DineApp.recepti.add(r);
+					
+					try {
+						ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./recepti.sims"));
+						out.writeObject(DineApp.recepti);
+						JOptionPane.showMessageDialog(null, "Uspesno dodavanje recepta.", "Unos recepta", NORMAL);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+					KreiranjeRecepta.this.dispose();
+				}
+			}
+			
+		});
 		cancelButton.addActionListener(new ActionListener() {
 
 			@Override
