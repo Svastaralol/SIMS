@@ -117,7 +117,7 @@ public class Registracija extends JFrame{
 					try {
 						ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./korisnici.sims"));
 						out.writeObject(DineApp.korisnici);
-						JOptionPane.showMessageDialog(null, "Uspesna registracija.", "Registracija", NORMAL);
+						JOptionPane.showMessageDialog(null, "Uspesna registracija.", "Registracija", JOptionPane.INFORMATION_MESSAGE);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

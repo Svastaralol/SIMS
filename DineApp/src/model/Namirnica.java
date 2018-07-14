@@ -17,9 +17,9 @@ public class Namirnica implements Serializable {
 	
 	public Namirnica(String sifra, String naziv, int cena) {
 		super();
-		this.sifra = sifra;
+		this.setSifra(sifra);
 		this.naziv = naziv;
-		this.cena = cena;
+		this.setCena(cena);
 	}
 
 	public String getNaziv() {
@@ -28,5 +28,21 @@ public class Namirnica implements Serializable {
 
 	public void setNaziv(String naziv) {
 		this.naziv = naziv;
+	}
+
+	public String getSifra() {
+		return sifra;
+	}
+
+	public void setSifra(String sifra) {
+		this.sifra = sifra;
+	}
+
+	public int getCena() {
+		return cena;
+	}
+
+	public void setCena(int cena) {
+		this.cena = cena;
 	}
 }

@@ -6,17 +6,21 @@ import java.util.List;
 
 public class Recepat implements Serializable {
 	
-	 private String naziv;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID =  -8949440908658012020L;
+	private String naziv;
 	 private String uputstvo;
 	 private int ocena; //po default-u 0
 	 private String sifra;
 	 private Date datumObjave;
-	 private List<Sastojak> namirnice;
-	// private StanjeRecepta stanje;
+	 private List<Sastojak> sastojci;
+	 private StanjeRecepta stanje; //inicijalno izrada
 	 
 	 public Recepat() {
 		 this.ocena = 0;
-		 //inicijalizuj stanje na izrada
+		 this.setStanje(new Izrada());
 		 
 	 }
 
@@ -62,15 +66,23 @@ public class Recepat implements Serializable {
 		this.datumObjave = datumObjave;
 	}
 
-	public List<Sastojak> getNamirnice() {
-		return namirnice;
+	public List<Sastojak> getSastojci() {
+		return sastojci;
 	}
 
-	public void setNamirnice(List<Sastojak> namirnice) {
-		this.namirnice = namirnice;
+	public void setSastojci(List<Sastojak> namirnice) {
+		this.sastojci = namirnice;
 	}
 	
 	public String toString() {
-		return this.naziv + ", " + this.uputstvo + ", " + this.namirnice;
+		return this.naziv + ", " + this.uputstvo + ", " + this.sastojci;
+	}
+
+	public StanjeRecepta getStanje() {
+		return stanje;
+	}
+
+	public void setStanje(StanjeRecepta stanje) {
+		this.stanje = stanje;
 	}
 }

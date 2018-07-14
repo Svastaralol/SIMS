@@ -1,5 +1,6 @@
 package gui;
 
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -18,7 +19,6 @@ import javax.swing.JTextField;
 import model.DineApp;
 import model.Korisnik;
 
-import java.awt.Component;
 
 @SuppressWarnings("serial")
 public class Logovanje extends JFrame {

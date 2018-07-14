@@ -140,7 +140,7 @@ public class KreiranjeRecepta extends JFrame {
 						s.setNamirnica(new Namirnica(split[i]));
 						sastojci.add(s);
 					}
-					r.setNamirnice(sastojci);
+					r.setSastojci(sastojci);
 					r.setDatumObjave(new Date());
 					r.setNaziv(nazivRecepta.getText());
 					r.setUputstvo(opis.getText());
