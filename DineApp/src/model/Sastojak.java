@@ -5,9 +5,11 @@ import java.io.Serializable;
 //ASOCIJATIVNA KLASA
 public class Sastojak implements Serializable {
   
-   private boolean opciona; //false po default-u
-   private int kolicina;
-   private Namirnica namirnica;
+   
+	//private static final long serialVersionUID = 1L;
+	private boolean opciona; //false po default-u
+    private int kolicina;
+    private Namirnica namirnica;
    
    public Sastojak() {
 	   this.opciona = false;
