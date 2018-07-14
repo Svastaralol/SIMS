@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import model.Administrator;
 import model.DineApp;
 import model.Korisnik;
 
@@ -19,10 +20,13 @@ import java.awt.GridLayout;
 import java.awt.TrayIcon.MessageType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 
@@ -101,11 +105,47 @@ public class Registracija extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				
+				
 				if (unosIme.getText().isEmpty() || unosPrezime.getText().isEmpty() || unosEmail.getText().isEmpty() 
 						|| unosUsername.getText().isEmpty() || unosLozinka.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Sva polja moraju biti popunjena.", "Registracija", NORMAL);
 				} else {
-					Korisnik k = new Korisnik();
+					Korisnik k = null;
+					try {
+						BufferedReader reader = new BufferedReader(new FileReader("./data/files/administratori.txt"));
+						String line = "";
+						boolean admin = false;
+						while ((line = reader.readLine()) != null) {
+							if (unosEmail.getText().equals(line)) {
+								admin = true;
+							}
+						}
+						
+						if (admin) {
+							k = new Administrator();
+						}
+						else {
+							k = new Korisnik();
+						}
+						
+						reader.close();
+						
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					for (int i = 0; i < DineApp.korisnici.size(); i++) {
+						if (DineApp.korisnici.get(i).getKorIme().equals(unosUsername.getText())) {
+							JOptionPane.showMessageDialog(null, "Vec postoji takvo korisnicko ime.", "Registracija", NORMAL);
+							return;
+						}
+						else if (DineApp.korisnici.get(i).geteMail().equals(unosEmail.getText())) {
+							JOptionPane.showMessageDialog(null, "Vec postoji takav E-Mail.", "Registracija", NORMAL);
+							return;
+						}
+					}
+					
 					k.setIme(unosIme.getText());
 					k.setPrezime(unosPrezime.getText());
 					k.seteMail(unosEmail.getText());
@@ -115,7 +155,7 @@ public class Registracija extends JFrame{
 					DineApp.korisnici.add(k);
 					
 					try {
-						ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./korisnici.sims"));
+						ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./data/files/korisnici.sims"));
 						out.writeObject(DineApp.korisnici);
 						JOptionPane.showMessageDialog(null, "Uspesna registracija.", "Registracija", JOptionPane.INFORMATION_MESSAGE);
 					} catch (Exception e) {

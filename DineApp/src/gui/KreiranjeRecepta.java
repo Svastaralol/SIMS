@@ -26,6 +26,7 @@ import model.DineApp;
 import model.Namirnica;
 import model.Recepat;
 import model.Sastojak;
+import model.Validacija;
 
 
 @SuppressWarnings("serial")
@@ -145,6 +146,7 @@ public class KreiranjeRecepta extends JFrame {
 					r.setNaziv(nazivRecepta.getText());
 					r.setUputstvo(opis.getText());
 					r.setKorisnik(DineApp.getInstance().ulogovaniKorisnik);
+					r.setStanje(new Validacija());
 					int brojOsoba = 0;
 					try {
 						brojOsoba = Integer.parseInt(kolikoOsoba.getText());
@@ -156,7 +158,7 @@ public class KreiranjeRecepta extends JFrame {
 					DineApp.recepti.add(r);
 					
 					try {
-						ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./recepti.sims"));
+						ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./data/files/recepti.sims"));
 						out.writeObject(DineApp.recepti);
 						JOptionPane.showMessageDialog(null, "Uspesno dodavanje recepta.", "Unos recepta", JOptionPane.INFORMATION_MESSAGE);
 					} catch (Exception e) {

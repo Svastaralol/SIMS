@@ -37,7 +37,6 @@ public class Sadrzaj extends JPanel{
 			this.add(new Stavka(DineApp.recepti.get(i)));
 		}
 		DineApp.getInstance().mainWindow.revalidate();
-		DineApp.getInstance().mainWindow.repaint();
 	}
 	
 }
