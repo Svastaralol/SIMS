@@ -14,8 +14,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import model.Administrator;
 import model.DineApp;
 import model.Korisnik;
 
@@ -66,10 +68,33 @@ public class Logovanje extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				for(Korisnik k: DineApp.korisnici) {
 					if (k.getKorIme().equals(korisnickoIme.getText()) && k.getLozinka().equals(lozinka.getText())) {
-						DineApp.getInstance().mainWindow.setVisible(true);
+						MainWindow w = DineApp.getInstance().mainWindow;
+						
+						if (k instanceof Administrator) {
+							w.container.add(new AlatkeAdministratora());
+							
+						}
+						else {
+							w.container.add(new AlatkeKorisnika());
+							
+						}
+						
+						w.sadrzaj = new Sadrzaj();
+						JScrollPane scrollFrame = new JScrollPane(w.sadrzaj);
+						scrollFrame.getVerticalScrollBar().setUnitIncrement(16);
+						scrollFrame.setVisible(true);
+						scrollFrame.setBorder(BorderFactory.createEmptyBorder());
+						w.sadrzaj.setAutoscrolls(true);
+						w.container.add(scrollFrame);
+						w.add(w.container);
+						w.revalidate();
+						
+						w.setVisible(true);
+						
+						
 						DineApp.getInstance().ulogovaniKorisnik = k;
 						if (k instanceof Korisnik) {
-							DineApp.getInstance().mainWindow.getSadrzaj().ucitajRecepte();
+							DineApp.getInstance().mainWindow.sadrzaj.ucitajRecepte();
 						}
 						MainWindow.changeFont(DineApp.getInstance().mainWindow);
 						Logovanje.this.dispose();

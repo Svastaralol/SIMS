@@ -45,22 +45,7 @@ public class MainWindow extends JFrame {
 	public int height = 720;
 	public JPanel container;
 	
-	private AlatkeKorisnika alatke;
-	
-	public AlatkeKorisnika getAlatke() {
-		return alatke;
-	}
-	public void setAlatke(AlatkeKorisnika alatke) {
-		this.alatke = alatke;
-	}
-	public Sadrzaj getSadrzaj() {
-		return sadrzaj;
-	}
-	public void setSadrzaj(Sadrzaj sadrzaj) {
-		this.sadrzaj = sadrzaj;
-	}
-
-	private Sadrzaj sadrzaj;
+	public Sadrzaj sadrzaj;
 	
 	public MainWindow() {
 		
@@ -72,18 +57,18 @@ public class MainWindow extends JFrame {
 		this.container = new JPanel();
 		this.container.setLayout(new BoxLayout(this.container, BoxLayout.X_AXIS));
 		
-		this.alatke = new AlatkeKorisnika();
-		this.sadrzaj = new Sadrzaj();
+		//this.alatke = new AlatkeAdministratora();
+		//this.sadrzaj = new Sadrzaj();
 		
-		this.container.add(this.alatke);
-		JScrollPane scrollFrame = new JScrollPane(this.sadrzaj);
-		scrollFrame.getVerticalScrollBar().setUnitIncrement(16);
-		scrollFrame.setVisible(true);
-		scrollFrame.setBorder(BorderFactory.createEmptyBorder());
-		this.sadrzaj.setAutoscrolls(true);
-		this.container.add(scrollFrame);
+		//this.container.add(this.alatke);
+		//JScrollPane scrollFrame = new JScrollPane(this.sadrzaj);
+		//scrollFrame.getVerticalScrollBar().setUnitIncrement(16);
+		//scrollFrame.setVisible(true);
+		//scrollFrame.setBorder(BorderFactory.createEmptyBorder());
+		//this.sadrzaj.setAutoscrolls(true);
+		//this.container.add(scrollFrame);
 		
-		this.add(this.container);
+		//this.add(this.container);
 		
 		//this.setVisible(true);
 		new Logovanje();
