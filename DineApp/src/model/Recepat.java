@@ -6,28 +6,22 @@ import java.util.List;
 
 public class Recepat implements Serializable {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID =  -8949440908658012020L;
+	private static final long serialVersionUID = 8530634488509413880L;
 	private String naziv;
 	 private String uputstvo;
 	 private int ocena; //po default-u 0
 	 private String sifra;
 	 private Date datumObjave;
-<<<<<<< HEAD
 	 private int kolikoOsoba;
 	 private Korisnik korisnik;
 	 
-
-	private List<Sastojak> sastojci;
 	// private StanjeRecepta stanje;
-=======
 	 private List<Sastojak> sastojci;
 	 private StanjeRecepta stanje; //inicijalno izrada
->>>>>>> refs/remotes/origin/master
 	 
-	 public Recepat() {
+	 
+
+	public Recepat() {
 		 this.ocena = 0;
 		 this.setStanje(new Izrada());
 		 
@@ -91,31 +85,23 @@ public class Recepat implements Serializable {
 		this.datumObjave = datumObjave;
 	}
 
-	public List<Sastojak> getSastojci() {
-		return sastojci;
-	}
-
-<<<<<<< HEAD
-	public void setSastojci(List<Sastojak> sastojci) {
-		this.sastojci = sastojci;
-=======
-	public void setSastojci(List<Sastojak> namirnice) {
-		this.sastojci = namirnice;
->>>>>>> refs/remotes/origin/master
-	}
-	
-	public String toString() {
-		return this.naziv + ", " + this.uputstvo + ", " + this.sastojci;
-<<<<<<< HEAD
-=======
-	}
-
 	public StanjeRecepta getStanje() {
 		return stanje;
 	}
 
 	public void setStanje(StanjeRecepta stanje) {
 		this.stanje = stanje;
->>>>>>> refs/remotes/origin/master
+	}
+	
+	public List<Sastojak> getSastojci() {
+		return sastojci;
+	}
+
+	public void setSastojci(List<Sastojak> sastojci) {
+		this.sastojci = sastojci;
+	}
+	
+	public String toString() {
+		return this.naziv + ", " + this.uputstvo + ", " + this.sastojci;
 	}
 }

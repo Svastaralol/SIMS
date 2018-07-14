@@ -1,6 +1,8 @@
 package model;
 
-public class Izrada extends StanjeRecepta {
+import java.io.Serializable;
+
+public class Izrada extends StanjeRecepta implements Serializable{
 	
 	public Izrada() {
 		

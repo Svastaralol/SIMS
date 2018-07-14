@@ -1,6 +1,8 @@
 package model;
 
-public class Validacija extends StanjeRecepta {
+import java.io.Serializable;
+
+public class Validacija extends StanjeRecepta implements Serializable {
 	
 	public Validacija() {
 		

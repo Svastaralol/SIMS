@@ -1,6 +1,8 @@
 package model;
 
-public class Objavljen extends StanjeRecepta {
+import java.io.Serializable;
+
+public class Objavljen extends StanjeRecepta implements Serializable {
 	
 	public Objavljen() { 
 		
