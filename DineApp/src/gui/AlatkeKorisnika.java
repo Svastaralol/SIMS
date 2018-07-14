@@ -95,6 +95,14 @@ public class AlatkeKorisnika extends JPanel{
 			
 		}};
 		
+		this.unesiPodatkeDugme.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				IzmenaPodataka izmena = new IzmenaPodataka();
+				MainWindow.changeFont(izmena);
+		}
+		});
+		
 		this.prikaziOmiljenoDugme = new JRadioButton("Omiljeno"){{
 			setBackground(new Color(255, 255, 255));
 		}};

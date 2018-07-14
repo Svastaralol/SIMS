@@ -23,7 +23,8 @@ public class Korisnik implements Serializable {
    public Recepat omiljeni;
    
    public Korisnik() {
-	   
+	   Alat = new ArrayList<Alat>();
+	   Namirnica = new ArrayList<Namirnica>();
    }
    
    public String getIme() {

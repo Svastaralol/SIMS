@@ -87,5 +87,6 @@ public class MainWindow extends JFrame {
 		
 		//this.setVisible(true);
 		new Logovanje();
+
 	}
 }
