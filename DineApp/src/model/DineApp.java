@@ -22,6 +22,7 @@ public class DineApp {
 	public static ArrayList<Korisnik> korisnici = new ArrayList<>();
 	public static ArrayList<Recepat> recepti = new ArrayList<>();
 	
+	public Korisnik ulogovaniKorisnik;
 	public MainWindow mainWindow;
 	
 	public DineApp() {

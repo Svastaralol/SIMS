@@ -18,6 +18,7 @@ public class Korisnik implements Serializable {
    
    public java.util.Collection<Alat> Alat;
    public java.util.Collection<Namirnica> Namirnica;
+   public List<Recepat> recepti;
    public Recepat omiljeni;
    
    public Korisnik() {

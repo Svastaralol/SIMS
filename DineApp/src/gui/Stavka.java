@@ -14,9 +14,11 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import model.Korisnik;
 import model.Recepat;
+import model.Sastojak;
 
 @SuppressWarnings("serial")
 public class Stavka extends JPanel {
@@ -89,33 +91,61 @@ public class Stavka extends JPanel {
 		leftLayer.add(MainWindow.getNewLine());
 		leftLayer.add(picLabel);
 		
-		middleLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddddddddd"));
-		middleLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		middleLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		middleLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		middleLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		middleLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		middleLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		middleLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		middleLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		middleLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		middleLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		middleLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		middleLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
 		
-		rightLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		rightLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		rightLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		rightLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		rightLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		rightLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		rightLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		rightLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		rightLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		rightLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		rightLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		rightLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
-		rightLayer.add(new JLabel("ssssssddddddddddddddddddddddddddddddddddd"));
+		JLabel naziv = new JLabel(recepat.getNaziv());
+		naziv.setFont(naziv.getFont().deriveFont(16f));
+		JTextArea uputstvo = new JTextArea(5, 23);
+		uputstvo.setEditable(false);
+		uputstvo.setLineWrap( true );
+		uputstvo.setText(recepat.getUputstvo());
+		uputstvo.setFont(uputstvo.getFont().deriveFont(12f));
+		JLabel kolikoOsoba = new JLabel("Broj osoba:  " + recepat.getKolikoOsoba());
+		
+		JLabel ocena = new JLabel("Svidjanja: " + recepat.getOcena());
+		
+		String glavneNamirniceText = "";
+		String opcioneNamirniceText = "";
+		
+		for (int i = 0; i < recepat.getSastojci().size(); i++) {
+			if (i == 0) {
+				if (!recepat.getSastojci().get(i).isOpciona()) {
+					glavneNamirniceText += recepat.getSastojci().get(i).getNamirnica().getNaziv();
+				}
+				else {
+					opcioneNamirniceText += recepat.getSastojci().get(i).getNamirnica().getNaziv();
+				}
+			}
+			else {
+				if (!recepat.getSastojci().get(i).isOpciona()) {
+					glavneNamirniceText += ", " + recepat.getSastojci().get(i).getNamirnica().getNaziv();
+				}
+				else {
+					opcioneNamirniceText += ", " + recepat.getSastojci().get(i).getNamirnica().getNaziv();
+				}
+			}
+			 
+		}
+		
+		JLabel glavneNamirnice = new JLabel("Glavne namirnice: " + glavneNamirniceText);
+		JLabel opcioneNamirnice = new JLabel("Opcione namirnice: " + opcioneNamirniceText);
+		JLabel korisnickoIme = new JLabel("Korisnik: " + recepat.getKorisnik().getKorIme());
+		
+		
+		middleLayer.add(naziv);
+		middleLayer.add(MainWindow.getNewLine());
+		middleLayer.add(uputstvo);
+		middleLayer.add(MainWindow.getNewLine());
+		middleLayer.add(kolikoOsoba);
+		
+		
+		
+		rightLayer.add(ocena);
+		rightLayer.add(MainWindow.getNewLine());
+		rightLayer.add(glavneNamirnice);
+		rightLayer.add(MainWindow.getNewLine());
+		rightLayer.add(opcioneNamirnice);
+		rightLayer.add(MainWindow.getNewLine());
+		rightLayer.add(korisnickoIme);
 		
 		
 		

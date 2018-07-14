@@ -140,16 +140,25 @@ public class KreiranjeRecepta extends JFrame {
 						s.setNamirnica(new Namirnica(split[i]));
 						sastojci.add(s);
 					}
-					r.setNamirnice(sastojci);
+					r.setSastojci(sastojci);
 					r.setDatumObjave(new Date());
 					r.setNaziv(nazivRecepta.getText());
 					r.setUputstvo(opis.getText());
+					r.setKorisnik(DineApp.getInstance().ulogovaniKorisnik);
+					int brojOsoba = 0;
+					try {
+						brojOsoba = Integer.parseInt(kolikoOsoba.getText());
+					}
+					catch(Exception e) {
+						brojOsoba = 2;
+					}
+					r.setKolikoOsoba(brojOsoba);
 					DineApp.recepti.add(r);
 					
 					try {
 						ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./recepti.sims"));
 						out.writeObject(DineApp.recepti);
-						JOptionPane.showMessageDialog(null, "Uspesno dodavanje recepta.", "Unos recepta", NORMAL);
+						JOptionPane.showMessageDialog(null, "Uspesno dodavanje recepta.", "Unos recepta", JOptionPane.INFORMATION_MESSAGE);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

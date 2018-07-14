@@ -11,7 +11,11 @@ public class Recepat implements Serializable {
 	 private int ocena; //po default-u 0
 	 private String sifra;
 	 private Date datumObjave;
-	 private List<Sastojak> namirnice;
+	 private int kolikoOsoba;
+	 private Korisnik korisnik;
+	 
+
+	private List<Sastojak> sastojci;
 	// private StanjeRecepta stanje;
 	 
 	 public Recepat() {
@@ -41,6 +45,22 @@ public class Recepat implements Serializable {
 	public int getOcena() {
 		return ocena;
 	}
+	
+	public Korisnik getKorisnik() {
+		return korisnik;
+	}
+
+	public void setKorisnik(Korisnik korisnik) {
+		this.korisnik = korisnik;
+	}
+	
+	public int getKolikoOsoba() {
+		return kolikoOsoba;
+	}
+
+	public void setKolikoOsoba(int kolikoOsoba) {
+		this.kolikoOsoba = kolikoOsoba;
+	}
 
 	public void setOcena(int ocena) {
 		this.ocena = ocena;
@@ -62,15 +82,15 @@ public class Recepat implements Serializable {
 		this.datumObjave = datumObjave;
 	}
 
-	public List<Sastojak> getNamirnice() {
-		return namirnice;
+	public List<Sastojak> getSastojci() {
+		return sastojci;
 	}
 
-	public void setNamirnice(List<Sastojak> namirnice) {
-		this.namirnice = namirnice;
+	public void setSastojci(List<Sastojak> sastojci) {
+		this.sastojci = sastojci;
 	}
 	
 	public String toString() {
-		return this.naziv + ", " + this.uputstvo + ", " + this.namirnice;
+		return this.naziv + ", " + this.uputstvo + ", " + this.sastojci;
 	}
 }

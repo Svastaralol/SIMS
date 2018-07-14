@@ -46,6 +46,20 @@ public class MainWindow extends JFrame {
 	public JPanel container;
 	
 	private AlatkeKorisnika alatke;
+	
+	public AlatkeKorisnika getAlatke() {
+		return alatke;
+	}
+	public void setAlatke(AlatkeKorisnika alatke) {
+		this.alatke = alatke;
+	}
+	public Sadrzaj getSadrzaj() {
+		return sadrzaj;
+	}
+	public void setSadrzaj(Sadrzaj sadrzaj) {
+		this.sadrzaj = sadrzaj;
+	}
+
 	private Sadrzaj sadrzaj;
 	
 	public MainWindow() {

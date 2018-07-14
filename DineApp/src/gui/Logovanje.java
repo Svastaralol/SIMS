@@ -67,6 +67,10 @@ public class Logovanje extends JFrame {
 				for(Korisnik k: DineApp.korisnici) {
 					if (k.getKorIme().equals(korisnickoIme.getText()) && k.getLozinka().equals(lozinka.getText())) {
 						DineApp.getInstance().mainWindow.setVisible(true);
+						DineApp.getInstance().ulogovaniKorisnik = k;
+						if (k instanceof Korisnik) {
+							DineApp.getInstance().mainWindow.getSadrzaj().ucitajRecepte();
+						}
 						MainWindow.changeFont(DineApp.getInstance().mainWindow);
 						Logovanje.this.dispose();
 						return;
@@ -101,8 +105,6 @@ public class Logovanje extends JFrame {
 		
 		bottomLayer.setPreferredSize(new Dimension(0, -50));
 		container.add(bottomLayer);
-		
-		Logovanje logovanje = this;
 		
 		getContentPane().add(container);
 		
