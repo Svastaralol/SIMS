@@ -29,8 +29,8 @@ import javax.swing.JButton;
 @SuppressWarnings("serial")
 public class Registracija extends JFrame{
 	
-	private int width = 420;
-	private int height = 300;
+	private int width = 410;
+	private int height = 260;
 	private JPanel panel;
 	private JTextField unosIme;
 	private JTextField unosPrezime;
@@ -47,6 +47,7 @@ public class Registracija extends JFrame{
 		MainWindow.changeFont(this);
 		
 		panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
 		getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		

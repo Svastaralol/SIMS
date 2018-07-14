@@ -24,7 +24,7 @@ import java.awt.Component;
 public class Logovanje extends JFrame {
 	
 	private int width = 400;
-	private int height = 220;
+	private int height = 200;
 	
 	private JTextField korisnickoIme;
 	private JTextField lozinka;
@@ -68,12 +68,12 @@ public class Logovanje extends JFrame {
 					if (k.getKorIme().equals(korisnickoIme.getText()) && k.getLozinka().equals(lozinka.getText())) {
 						DineApp.getInstance().mainWindow.setVisible(true);
 						MainWindow.changeFont(DineApp.getInstance().mainWindow);
+						Logovanje.this.dispose();
 						return;
 					}
 				}
 				JOptionPane.showMessageDialog(null, "Neispravni podaci.", "Logovanje", NORMAL);
 			}
-			
 		});
 		
 		JButton registracijaDugme = new JButton("Registruj se");
@@ -98,6 +98,9 @@ public class Logovanje extends JFrame {
 		bottomLayer.add(logovanjeDugme);
 		bottomLayer.add(registracijaDugme);
 		bottomLayer.add(odustanakDugme);
+		
+		bottomLayer.setPreferredSize(new Dimension(0, -50));
+		container.add(bottomLayer);
 		
 		Logovanje logovanje = this;
 		

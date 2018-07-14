@@ -8,23 +8,17 @@ package model;
 import java.io.Serializable;
 import java.util.*;
 
-/** @pdOid c6fe57a1-3d27-4d16-928b-0d201b4a0693 */
+@SuppressWarnings("serial")
 public class Korisnik implements Serializable {
-   /** @pdOid a12c74f4-4dc2-43b1-96fd-a09d846aed60 */
    protected String ime;
-   /** @pdOid 23024268-323f-4d6a-97bf-166601e0b3a0 */
    protected String prezime;
-   /** @pdOid 8913f2c0-5e4c-4584-a46a-3b0def725719 */
    protected String eMail;
-   /** @pdOid 6c809f38-9172-4a0e-a7ba-75309e837dd9 */
    protected String korIme;
-   /** @pdOid 218220a6-9b4c-4d63-bb2d-267f900bc576 */
    protected String lozinka;
    
-   /** @pdRoleInfo migr=no name=Alat assc=association8 coll=java.util.Collection impl=java.util.HashSet mult=0..* type=Aggregation */
    public java.util.Collection<Alat> Alat;
-   /** @pdRoleInfo migr=no name=Namirnica assc=association14 coll=java.util.Collection impl=java.util.HashSet mult=0..* type=Aggregation */
    public java.util.Collection<Namirnica> Namirnica;
+   public Recepat omiljeni;
    
    public Korisnik() {
 	   
@@ -70,19 +64,14 @@ public class Korisnik implements Serializable {
 		this.lozinka = lozinka;
 	}
 
-/** @param r
-    * @pdOid c4d1eacc-aca0-48f2-a5d5-a7d871ea1da9 */
    public void uvecajOcenu(Recepat r) {
       // TODO: implement
    }
    
-   /** @param r
-    * @pdOid 6613da25-6544-4bd0-a3d5-fbddc7722486 */
    public void umanjiOcenu(Recepat r) {
       // TODO: implement
    }
    
-   /** @pdGenerated default getter */
    public java.util.Collection<Alat> getAlat() {
       if (Alat == null)
          Alat = new java.util.HashSet<Alat>();
