@@ -48,25 +48,18 @@ public class MainWindow extends JFrame {
 	private AlatkeKorisnika alatke;
 	private Sadrzaj sadrzaj;
 	
-	
 	public MainWindow() {
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);	// podesava da se prozor ne moze razvlaciti
-		
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		screenWidth = (int) screenSize.getWidth();
-		screenHeight = (int) screenSize.getHeight();
-		
-		this.setBounds(screenWidth/2 - width/2, screenHeight/2 - height/2, width, height);
-		
+		this.setSize(width, height);
+		this.setLocationRelativeTo(null);
 		
 		this.container = new JPanel();
 		this.container.setLayout(new BoxLayout(this.container, BoxLayout.X_AXIS));
 		
 		this.alatke = new AlatkeKorisnika();
 		this.sadrzaj = new Sadrzaj();
-		
 		
 		this.container.add(this.alatke);
 		JScrollPane scrollFrame = new JScrollPane(this.sadrzaj);
@@ -76,22 +69,9 @@ public class MainWindow extends JFrame {
 		this.sadrzaj.setAutoscrolls(true);
 		this.container.add(scrollFrame);
 		
-		
-		
 		this.add(this.container);
-		
-		
-		
-		
-		
-		
-		
 		
 		//this.setVisible(true);
 		new Logovanje();
-		new Registracija();
-		
 	}
-	
-	
 }

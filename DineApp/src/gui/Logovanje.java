@@ -11,16 +11,20 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import model.DineApp;
+import model.Korisnik;
+
+import java.awt.Component;
 
 @SuppressWarnings("serial")
 public class Logovanje extends JFrame {
 	
 	private int width = 400;
-	private int height = 180;
+	private int height = 220;
 	
 	private JTextField korisnickoIme;
 	private JTextField lozinka;
@@ -28,16 +32,13 @@ public class Logovanje extends JFrame {
 	public Logovanje() {
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(MainWindow.screenWidth/2 - this.width/2, MainWindow.screenHeight/2 - this.height/2, width, height);
-		
+		this.setSize(width, height);
+		this.setLocationRelativeTo(null);
 		
 		JPanel container = new JPanel();
 		container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
 		JPanel topLayer = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		topLayer.setBackground(new Color(255,255,255));
-		
-		JPanel bottomLayer = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		bottomLayer.setBackground(new Color(255,255,255));
 		
 		this.korisnickoIme = new JTextField(30);
 		this.korisnickoIme.setBorder(BorderFactory.createCompoundBorder(MainWindow.border,
@@ -53,46 +54,54 @@ public class Logovanje extends JFrame {
 		topLayer.add(this.lozinka);
 		container.add(topLayer);
 		
-		Logovanje logovanje = this;
+		FlowLayout fl_bottomLayer = new FlowLayout(FlowLayout.RIGHT);
+		JPanel bottomLayer = new JPanel(fl_bottomLayer);
+		topLayer.add(bottomLayer);
+		bottomLayer.setBackground(new Color(255,255,255));
 		
 		JButton logovanjeDugme = new JButton("Uloguj se");
 		logovanjeDugme.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				logovanje.dispose();
-				DineApp.getInstance().mainWindow.setVisible(true);
-				MainWindow.changeFont(DineApp.getInstance().mainWindow);
+				for(Korisnik k: DineApp.korisnici) {
+					if (k.getKorIme().equals(korisnickoIme.getText()) && k.getLozinka().equals(lozinka.getText())) {
+						DineApp.getInstance().mainWindow.setVisible(true);
+						MainWindow.changeFont(DineApp.getInstance().mainWindow);
+						return;
+					}
+				}
+				JOptionPane.showMessageDialog(null, "Neispravni podaci.", "Logovanje", NORMAL);
 			}
 			
 		});
 		
-		
-		
 		JButton registracijaDugme = new JButton("Registruj se");
+		registracijaDugme.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Registracija();
+			}
+			
+		});
 		JButton odustanakDugme = new JButton("Odustani");
 		odustanakDugme.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				System.exit(0);
 			}
 			
 		});
 		
-		bottomLayer.setPreferredSize(new Dimension(0,-30));
-		
-		
 		bottomLayer.add(logovanjeDugme);
 		bottomLayer.add(registracijaDugme);
 		bottomLayer.add(odustanakDugme);
 		
+		Logovanje logovanje = this;
 		
-		container.add(bottomLayer);
-		
-		this.add(container);
+		getContentPane().add(container);
 		
 		MainWindow.changeFont(container);
 		this.setVisible(true);
