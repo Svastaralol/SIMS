@@ -99,8 +99,8 @@ public class AlatkeKorisnika extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				KreiranjeRecepta kreiranje = new KreiranjeRecepta();
-				MainWindow.changeFont(kreiranje);
+				SlanjeZahteva sz = new SlanjeZahteva();
+				MainWindow.changeFont(sz);
 				
 			}
 			
