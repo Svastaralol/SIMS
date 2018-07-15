@@ -18,29 +18,30 @@ import model.Namirnica;
 
 public class IzmenaPodataka extends JFrame {
 	
-	int width = 480;
-	int height = 300;
+	private int width = 480;
+	private int height = 300;
 	
 	/* GUI KOMPONENTE */
-	JTextField poljeZaIme;
-	JTextField poljeZaPrezime;
-	JTextField poljeZaSifru;
-	JTextField poljeZaNamirnice;
-	JTextField poljeZaAlate;
+	private JTextField poljeZaIme;
+	private JTextField poljeZaPrezime;
+	private JTextField poljeZaSifru;
+	private JTextField poljeZaNamirnice;
+	private JTextField poljeZaAlate;
 	
-	JLabel labelaZaIme;
-	JLabel labelaZaPrezime;
-	JLabel labelaZaSifru;
-	JLabel labelaZaNamirnice;
-	JLabel labelaZaAlate;
+	private JLabel labelaZaIme;
+	private JLabel labelaZaPrezime;
+	private JLabel labelaZaSifru;
+	private JLabel labelaZaNamirnice;
+	private JLabel labelaZaAlate;
 	
-	JButton potvrdiDugme;
-	JButton odustanakDugme;
+	private JButton potvrdiDugme;
+	private JButton odustanakDugme;
 	
 	public IzmenaPodataka() {
 		
 		this.setBounds(200, 200, width, height);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		this.setResizable(false);
 		
 		JPanel panel = new JPanel();
 		
