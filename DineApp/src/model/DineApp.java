@@ -24,7 +24,7 @@ public class DineApp {
 	public static ArrayList<Korisnik> korisnici = new ArrayList<>();
 	public static ArrayList<Recepat> recepti = new ArrayList<>();
 	
-	public List<Namirnica> namirnice = new ArrayList<Namirnica>();
+	public static List<Namirnica> namirnice = new ArrayList<Namirnica>();
 	public List<Alat> alati = new ArrayList<Alat>();
 	
 	public Korisnik ulogovaniKorisnik;
@@ -64,6 +64,17 @@ public class DineApp {
 			korisnici = (ArrayList<Korisnik>) in.readObject();
 			in.close();
 			
+			//Ucitavanje namirnica (pretpostavljamo da postoji file)
+			f = new File("./data/files/namirnice.sims");
+			if (!f.exists()) {
+				f.createNewFile();
+				ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./data/files/namirnice.sims"));
+				out.writeObject(DineApp.namirnice);
+			}
+			
+			in = new ObjectInputStream(new FileInputStream("./data/files/namirnice.sims"));
+			namirnice = (List<Namirnica>) in.readObject();
+			
 			// Ucitavanje recepata ili kreiranje fajla ako ne postji jos uvek
 			f = new File("./data/files/recepti.sims");
 			if (!f.exists()) {
@@ -90,6 +101,8 @@ public class DineApp {
 		} catch (UnsupportedLookAndFeelException e1) {
 			e1.printStackTrace();
 		}
+		
+		System.out.println("namirnice " + namirnice.size());
 		
 		
 		DineApp.getInstance();
