@@ -23,10 +23,9 @@ public class DineApp {
 	private static DineApp instance = null;
 	public static ArrayList<Korisnik> korisnici = new ArrayList<>();
 	public static ArrayList<Recepat> recepti = new ArrayList<>();
-	public List<Namirnica> namirniceZaObradu = new ArrayList<>();
 	
-	public List<Namirnica> validneNamirnice = new ArrayList<Namirnica>();
-	public List<Alat> validniAlati = new ArrayList<Alat>();
+	public List<Namirnica> namirnice = new ArrayList<Namirnica>();
+	public List<Alat> alati = new ArrayList<Alat>();
 	
 	public Korisnik ulogovaniKorisnik;
 	public MainWindow mainWindow;

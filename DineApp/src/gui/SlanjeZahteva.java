@@ -84,8 +84,8 @@ public class SlanjeZahteva extends JFrame {
 				String cena = poljeZaCenu.getText();
 				
 				Namirnica n = new Namirnica("", naziv, Integer.parseInt(cena));
-				DineApp.getInstance().namirniceZaObradu.add(n);
-				System.out.println(DineApp.getInstance().namirniceZaObradu.size());
+				System.out.println(n.isValidna());
+				DineApp.getInstance().namirnice.add(n);
 				
 				SlanjeZahteva.this.dispose();
 			}
