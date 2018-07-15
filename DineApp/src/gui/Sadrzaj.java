@@ -30,7 +30,6 @@ public class Sadrzaj extends JPanel{
 			i--;
 			
 		}
-		//DineApp.getInstance().mainWindow.revalidate();
 		
 	}
 	
@@ -38,11 +37,8 @@ public class Sadrzaj extends JPanel{
 		for (int i = 0; i < DineApp.recepti.size(); i++) {
 			if (DineApp.recepti.get(i).getStanje() instanceof Objavljen) {
 				this.add(new Stavka(DineApp.recepti.get(i)));
-				System.out.println("sss");
 			}
-			
 		}
-		//DineApp.getInstance().mainWindow.revalidate();
 	}
 	
 	public void ucitajRecepteAdministrator() {
@@ -52,7 +48,6 @@ public class Sadrzaj extends JPanel{
 			}
 			
 		}
-		//DineApp.getInstance().mainWindow.revalidate();
 	}
 	
 	public void refreshRecepteKorisnik() {
