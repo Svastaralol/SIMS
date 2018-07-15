@@ -8,18 +8,21 @@ public class Namirnica implements Serializable {
 	private String sifra;
 	private String naziv;
 	private int cena;
+	private boolean validna;
 	
-	public Namirnica() {}
+	public Namirnica() { this.validna = false;}
 	
 	public Namirnica(String naziv) {
 		this.naziv = naziv;
+		this.validna = false;
 	}
 	
 	public Namirnica(String sifra, String naziv, int cena) {
-		super();
+		
 		this.setSifra(sifra);
 		this.naziv = naziv;
 		this.setCena(cena);
+		this.validna = false;
 	}
 
 	public String getNaziv() {
@@ -44,5 +47,13 @@ public class Namirnica implements Serializable {
 
 	public void setCena(int cena) {
 		this.cena = cena;
+	}
+
+	public boolean isValidna() {
+		return validna;
+	}
+
+	public void setValidna(boolean validna) {
+		this.validna = validna;
 	}
 }
