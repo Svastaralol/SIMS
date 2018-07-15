@@ -61,7 +61,7 @@ public class DineApp {
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream("./data/files/korisnici.sims"));
 			korisnici = (ArrayList<Korisnik>) in.readObject();
 			in.close();
-
+			
 			// Ucitavanje recepata ili kreiranje fajla ako ne postji jos uvek
 			f = new File("./data/files/recepti.sims");
 			if (!f.exists()) {

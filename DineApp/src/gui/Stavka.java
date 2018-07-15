@@ -165,7 +165,7 @@ public class Stavka extends JPanel {
 					boolean flag = false;
 					
 					for (int i = 0; i < DineApp.getInstance().ulogovaniKorisnik.omiljeni.size(); i++) {
-						if (recepat == DineApp.getInstance().ulogovaniKorisnik.omiljeni.get(i)) {
+						if (recepat.getSifra().equals(DineApp.getInstance().ulogovaniKorisnik.omiljeni.get(i).getSifra())) {
 							flag = true;
 						}
 					}
@@ -198,7 +198,7 @@ public class Stavka extends JPanel {
 					boolean flag = false;
 					
 					for (int i = 0; i < DineApp.getInstance().ulogovaniKorisnik.neOmiljeni.size(); i++) {
-						if (recepat == DineApp.getInstance().ulogovaniKorisnik.neOmiljeni.get(i)) {
+						if (recepat.getSifra().equals(DineApp.getInstance().ulogovaniKorisnik.neOmiljeni.get(i).getSifra())) {
 							flag = true;
 						}
 					}
@@ -209,6 +209,7 @@ public class Stavka extends JPanel {
 						MainWindow.upisRecepataUFajl();
 						MainWindow.upisKorisnikaUFajl();
 					}
+					System.out.println(DineApp.getInstance().ulogovaniKorisnik.neOmiljeni.size());
 					
 				}
 				

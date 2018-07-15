@@ -39,4 +39,8 @@ public class Sadrzaj extends JPanel{
 		DineApp.getInstance().mainWindow.revalidate();
 	}
 	
+	public void refresh() {
+		
+	}
+	
 }

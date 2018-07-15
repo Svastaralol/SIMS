@@ -161,6 +161,7 @@ public class KreiranjeRecepta extends JFrame {
 					r.setUputstvo(opis.getText());
 					r.setKorisnik(DineApp.getInstance().ulogovaniKorisnik);
 					r.setStanje(new Validacija());
+					r.setSifra("R" + (DineApp.recepti.size() + 1) );
 					int brojOsoba = 0;
 					try {
 						brojOsoba = Integer.parseInt(kolikoOsoba.getText());
