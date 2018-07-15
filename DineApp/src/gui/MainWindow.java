@@ -92,5 +92,14 @@ public class MainWindow extends JFrame {
 		}
 	}
 	
+	public static void upisKorisnikaUFajl() {
+		try {
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./data/files/korisnici.sims"));
+			out.writeObject(DineApp.korisnici);
+			//JOptionPane.showMessageDialog(null, "Uspesno dodavanje recepta.", "Unos recepta", JOptionPane.INFORMATION_MESSAGE);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 }

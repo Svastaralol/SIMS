@@ -20,11 +20,14 @@ public class Korisnik implements Serializable {
    public java.util.Collection<Alat> Alat;
    public java.util.Collection<Namirnica> Namirnica;
    public List<Recepat> recepti;
-   public Recepat omiljeni;
+   public List<Recepat> omiljeni;
+   public List<Recepat> neOmiljeni;
    
    public Korisnik() {
 	   Alat = new ArrayList<Alat>();
 	   Namirnica = new ArrayList<Namirnica>();
+	   omiljeni = new ArrayList<>();
+	   neOmiljeni = new ArrayList<>();
    }
    
    public String getIme() {

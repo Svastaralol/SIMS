@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import model.DineApp;
 import model.Korisnik;
 import model.Recepat;
 import model.Sastojak;
@@ -161,8 +162,22 @@ public class Stavka extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
-					recepat.setOcena(recepat.getOcena() + 1);
-					MainWindow.upisRecepataUFajl();
+					boolean flag = false;
+					
+					for (int i = 0; i < DineApp.getInstance().ulogovaniKorisnik.omiljeni.size(); i++) {
+						if (recepat == DineApp.getInstance().ulogovaniKorisnik.omiljeni.get(i)) {
+							flag = true;
+						}
+					}
+					
+					if (!flag) {
+						recepat.setOcena(recepat.getOcena() + 1);
+						DineApp.getInstance().ulogovaniKorisnik.omiljeni.add(recepat);
+						MainWindow.upisRecepataUFajl();
+						MainWindow.upisKorisnikaUFajl();
+					}
+					
+					
 				}
 				
 			});
@@ -180,8 +195,21 @@ public class Stavka extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
-					recepat.setOcena(recepat.getOcena() - 1);
-					MainWindow.upisRecepataUFajl();
+					boolean flag = false;
+					
+					for (int i = 0; i < DineApp.getInstance().ulogovaniKorisnik.neOmiljeni.size(); i++) {
+						if (recepat == DineApp.getInstance().ulogovaniKorisnik.neOmiljeni.get(i)) {
+							flag = true;
+						}
+					}
+					
+					if (!flag) {
+						recepat.setOcena(recepat.getOcena() - 1);
+						DineApp.getInstance().ulogovaniKorisnik.neOmiljeni.add(recepat);
+						MainWindow.upisRecepataUFajl();
+						MainWindow.upisKorisnikaUFajl();
+					}
+					
 				}
 				
 			});

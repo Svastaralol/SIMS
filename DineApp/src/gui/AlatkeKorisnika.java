@@ -25,6 +25,7 @@ public class AlatkeKorisnika extends JPanel{
 	private JButton pretragaDugme;
 	private JButton kreirajReceptDugme;
 	private JButton unesiPodatkeDugme;
+	private JButton slanjeZahtevaZaNamirnicu;
 	
 	private JRadioButton sortirajRastuceDugme;
 	private JRadioButton sortirajOpadajuceDugme;
@@ -75,6 +76,26 @@ public class AlatkeKorisnika extends JPanel{
 			
 		}};
 		kreirajReceptDugme.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				KreiranjeRecepta kreiranje = new KreiranjeRecepta();
+				MainWindow.changeFont(kreiranje);
+				
+			}
+			
+		});
+		
+		this.slanjeZahtevaZaNamirnicu = new JButton("Posalji zahtev za novu namirnicu"){{
+			setContentAreaFilled(false);
+			setBackground(new Color(0, 179, 143));
+			setForeground(new Color(255, 255, 255));
+			setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+			setPreferredSize(new Dimension(325, 36));
+			setOpaque(true);
+			
+		}};
+		slanjeZahtevaZaNamirnicu.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -169,6 +190,7 @@ public class AlatkeKorisnika extends JPanel{
 		
 		this.add(MainWindow.getNewLine());
 		this.add(this.kreirajReceptDugme);
+		this.add(this.slanjeZahtevaZaNamirnicu);
 		this.add(this.unesiPodatkeDugme);
 		this.add(omiljenoIliSveLabela);
 		this.add(this.prikaziOmiljenoDugme);
