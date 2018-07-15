@@ -30,7 +30,6 @@ public class Sadrzaj extends JPanel{
 			i--;
 			
 		}
-		
 	}
 	
 	public void ucitajRecepteKorisnik() {

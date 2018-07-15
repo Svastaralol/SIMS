@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import model.DineApp;
+
 
 @SuppressWarnings("serial")
 public class AlatkeAdministratora extends JPanel{
@@ -64,8 +66,7 @@ public class AlatkeAdministratora extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				KreiranjeRecepta kreiranje = new KreiranjeRecepta();
-				MainWindow.changeFont(kreiranje);
+				DineApp.getInstance().mainWindow.sadrzaj.refreshRecepteAdministrator();
 				
 			}
 			
