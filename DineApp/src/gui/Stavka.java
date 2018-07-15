@@ -336,7 +336,45 @@ public class Stavka extends JPanel {
 		leftLayer.add(picLabel);
 		
 		
+		JLabel imePrezime = new JLabel("Ime i Prezime: " + korisnik.getIme() + " " + korisnik.getPrezime());
+		JLabel korisnickoIme = new JLabel("Korisnicko ime: " + korisnik.getKorIme());
+		JLabel email = new JLabel("E-Mail: " + korisnik.geteMail());
+		JLabel lozinka = new JLabel("Lozinka: " + korisnik.getLozinka());
 		
+		
+		middleLayer.add(imePrezime);
+		middleLayer.add(MainWindow.getNewLine());
+		middleLayer.add(korisnickoIme);
+		middleLayer.add(MainWindow.getNewLine());
+		middleLayer.add(email);
+		middleLayer.add(MainWindow.getNewLine());
+		middleLayer.add(lozinka);
+		middleLayer.add(MainWindow.getNewLine());
+		middleLayer.add(new JButton("Obrisi korisnika"){{
+			setContentAreaFilled(false);
+			setBackground(new Color(0, 179, 143));
+			setForeground(new Color(255, 255, 255));
+			setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+			setPreferredSize(new Dimension(96, 26));
+			setOpaque(true);
+			addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					
+					for (int i = 0; i < DineApp.korisnici.size(); i++) {
+						if (DineApp.korisnici.get(i) == korisnik) {
+							DineApp.korisnici.remove(i);
+						}
+					}
+					
+					MainWindow.upisKorisnikaUFajl();
+					DineApp.getInstance().mainWindow.sadrzaj.refreshKorisnike();
+					
+				}
+				
+			});
+		}});
 		
 		
 		this.add(leftLayer);
