@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import model.DineApp;
+
 
 @SuppressWarnings("serial")
 public class AlatkeKorisnika extends JPanel{
@@ -25,6 +27,126 @@ public class AlatkeKorisnika extends JPanel{
 	private JButton pretragaDugme;
 	private JButton kreirajReceptDugme;
 	private JButton unesiPodatkeDugme;
+	public JTextField getUnosNaziva() {
+		return unosNaziva;
+	}
+
+
+	public void setUnosNaziva(JTextField unosNaziva) {
+		this.unosNaziva = unosNaziva;
+	}
+
+
+	public JTextField getUnosNamirnica() {
+		return unosNamirnica;
+	}
+
+
+	public void setUnosNamirnica(JTextField unosNamirnica) {
+		this.unosNamirnica = unosNamirnica;
+	}
+
+
+	public JTextField getUnosAlata() {
+		return unosAlata;
+	}
+
+
+	public void setUnosAlata(JTextField unosAlata) {
+		this.unosAlata = unosAlata;
+	}
+
+
+	public JTextField getUnosBrojPorcija() {
+		return unosBrojPorcija;
+	}
+
+
+	public void setUnosBrojPorcija(JTextField unosBrojPorcija) {
+		this.unosBrojPorcija = unosBrojPorcija;
+	}
+
+
+	public JButton getPretragaDugme() {
+		return pretragaDugme;
+	}
+
+
+	public void setPretragaDugme(JButton pretragaDugme) {
+		this.pretragaDugme = pretragaDugme;
+	}
+
+
+	public JButton getKreirajReceptDugme() {
+		return kreirajReceptDugme;
+	}
+
+
+	public void setKreirajReceptDugme(JButton kreirajReceptDugme) {
+		this.kreirajReceptDugme = kreirajReceptDugme;
+	}
+
+
+	public JButton getUnesiPodatkeDugme() {
+		return unesiPodatkeDugme;
+	}
+
+
+	public void setUnesiPodatkeDugme(JButton unesiPodatkeDugme) {
+		this.unesiPodatkeDugme = unesiPodatkeDugme;
+	}
+
+
+	public JButton getSlanjeZahtevaZaNamirnicu() {
+		return slanjeZahtevaZaNamirnicu;
+	}
+
+
+	public void setSlanjeZahtevaZaNamirnicu(JButton slanjeZahtevaZaNamirnicu) {
+		this.slanjeZahtevaZaNamirnicu = slanjeZahtevaZaNamirnicu;
+	}
+
+
+	public JRadioButton getSortirajRastuceDugme() {
+		return sortirajRastuceDugme;
+	}
+
+
+	public void setSortirajRastuceDugme(JRadioButton sortirajRastuceDugme) {
+		this.sortirajRastuceDugme = sortirajRastuceDugme;
+	}
+
+
+	public JRadioButton getSortirajOpadajuceDugme() {
+		return sortirajOpadajuceDugme;
+	}
+
+
+	public void setSortirajOpadajuceDugme(JRadioButton sortirajOpadajuceDugme) {
+		this.sortirajOpadajuceDugme = sortirajOpadajuceDugme;
+	}
+
+
+	public JRadioButton getPrikaziOmiljenoDugme() {
+		return prikaziOmiljenoDugme;
+	}
+
+
+	public void setPrikaziOmiljenoDugme(JRadioButton prikaziOmiljenoDugme) {
+		this.prikaziOmiljenoDugme = prikaziOmiljenoDugme;
+	}
+
+
+	public JRadioButton getPrikaziSveDugme() {
+		return prikaziSveDugme;
+	}
+
+
+	public void setPrikaziSveDugme(JRadioButton prikaziSveDugme) {
+		this.prikaziSveDugme = prikaziSveDugme;
+	}
+
+
 	private JButton slanjeZahtevaZaNamirnicu;
 	
 	private JRadioButton sortirajRastuceDugme;
@@ -65,6 +187,25 @@ public class AlatkeKorisnika extends JPanel{
 			setPreferredSize(new Dimension(100, 26));
 			setOpaque(true);
 		}};
+		
+		this.pretragaDugme.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				DineApp.getInstance().mainWindow.sadrzaj.pretraga();
+				
+				
+			}
+			
+		});
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		this.kreirajReceptDugme = new JButton("Kreiraj Recepat"){{
 			setContentAreaFilled(false);
