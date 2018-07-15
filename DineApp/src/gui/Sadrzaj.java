@@ -57,6 +57,14 @@ public class Sadrzaj extends JPanel {
 		// DineApp.getInstance().mainWindow.revalidate();
 	}
 	
+	public void ucitajNamirniceAdministrator() {
+		for (int i = 0; i < DineApp.namirnice.size(); i++) {
+			if (!DineApp.namirnice.get(i).isValidna())
+				this.add(new Stavka(DineApp.namirnice.get(i)));
+
+		}
+	}
+	
 	public void pretraga() {
 
 		this.obrisiSveKomponente();
@@ -110,7 +118,10 @@ public class Sadrzaj extends JPanel {
 	}
 
 	public void refresNamirnice() {
-
+		this.obrisiSveKomponente();
+		this.ucitajNamirniceAdministrator();
+		MainWindow.changeFont(this);
+		DineApp.getInstance().mainWindow.revalidate();
 	}
 
 }

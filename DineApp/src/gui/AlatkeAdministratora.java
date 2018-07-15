@@ -106,8 +106,7 @@ public class AlatkeAdministratora extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				KreiranjeRecepta kreiranje = new KreiranjeRecepta();
-				MainWindow.changeFont(kreiranje);
+				DineApp.getInstance().mainWindow.sadrzaj.refresNamirnice();
 				
 			}
 			

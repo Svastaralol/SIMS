@@ -3,6 +3,7 @@ package gui;
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -14,7 +15,7 @@ import model.Recepat;
 
 public class PrikazKomentara extends JFrame {
 	
-	private int width = 750;
+	private int width = 500;
 	private int height = 400;
 	
 	/* GUI KOMPONENTE */
@@ -24,23 +25,27 @@ public class PrikazKomentara extends JFrame {
 	public PrikazKomentara(Recepat r) {
 		
 		this.setTitle("Komentari");
-		this.setBounds(200, 200, width, height);
+		this.setSize(width, height);
+		this.setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
 		//inicijalizacija text area
 		komentari = new JTextArea(20, 45);
-		komentari.disable();
+		komentari.setFont(komentari.getFont().deriveFont(13f));
+		komentari.setEditable(false);;
 		komentari.setLineWrap(true); //ako dodje do kraja, turi u novi red
 		komentari.setWrapStyleWord(true); //ako dodje do kraja, turi CELU REC dole, ne preseca je
-		
+		komentari.setBorder(BorderFactory.createEmptyBorder());
 		//da bi se video text area na prozoru
-		Border border = BorderFactory.createLineBorder(Color.gray);
-		komentari.setBorder(border);
+		//Border border = BorderFactory.createLineBorder(Color.gray);
+		//komentari.setBorder(border);
 		
 		//inicijalizacija scrollbar-a
 		scrollBar = new JScrollPane(komentari, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		scrollBar.setSize(100, 100);
+		
+		scrollBar.setSize(100, 200);
 		
 		//popuni text are komentarima
 		komentari.setText(dodavanjeSvihKomentara(r));

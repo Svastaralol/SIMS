@@ -87,6 +87,7 @@ public class MainWindow extends JFrame {
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./data/files/recepti.sims"));
 			out.writeObject(DineApp.recepti);
+			out.close();
 			//JOptionPane.showMessageDialog(null, "Uspesno dodavanje recepta.", "Unos recepta", JOptionPane.INFORMATION_MESSAGE);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,7 +98,19 @@ public class MainWindow extends JFrame {
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./data/files/korisnici.sims"));
 			out.writeObject(DineApp.korisnici);
+			out.close();
 			//JOptionPane.showMessageDialog(null, "Uspesno dodavanje recepta.", "Unos recepta", JOptionPane.INFORMATION_MESSAGE);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void upisNamirnicaUFajl() {
+		try {
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./data/files/namirnice.sims"));
+			out.writeObject(DineApp.namirnice);
+			out.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

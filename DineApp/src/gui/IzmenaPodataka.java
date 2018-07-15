@@ -1,10 +1,15 @@
 package gui;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,8 +23,8 @@ import model.Namirnica;
 
 public class IzmenaPodataka extends JFrame {
 	
-	private int width = 480;
-	private int height = 300;
+	private int width = 270;
+	private int height = 330;
 	
 	/* GUI KOMPONENTE */
 	private JTextField poljeZaIme;
@@ -39,11 +44,19 @@ public class IzmenaPodataka extends JFrame {
 	
 	public IzmenaPodataka() {
 		
-		this.setBounds(200, 200, width, height);
+		this.setSize(width, height);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 		
-		JPanel panel = new JPanel();
+		JPanel container = new JPanel();
+		container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
+		
+		JPanel topLayer = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		topLayer.setBackground(new Color(255, 255, 255));
+		JPanel bottomLayer = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		bottomLayer.setBackground(new Color(255, 255, 255));
+		bottomLayer.setPreferredSize(new Dimension(0, -170));
 		
 		/* Inicijalizacija GUI komponenti */
 		
@@ -59,40 +72,67 @@ public class IzmenaPodataka extends JFrame {
 		
 		//inicijalizacija text polja
 		poljeZaIme = new JTextField(DineApp.getInstance().ulogovaniKorisnik.getIme(), 20);
+		poljeZaIme.setBorder(BorderFactory.createCompoundBorder(MainWindow.border,
+	            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 		poljeZaPrezime = new JTextField(DineApp.getInstance().ulogovaniKorisnik.getPrezime(), 20);
+		poljeZaPrezime.setBorder(BorderFactory.createCompoundBorder(MainWindow.border,
+	            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 		poljeZaSifru = new JTextField(DineApp.getInstance().ulogovaniKorisnik.getLozinka(), 20);
-		poljeZaNamirnice = new JTextField(dobaviSpisakNamirnica(), 25);
-		poljeZaAlate = new JTextField(dobaviSpisakAlata(), 25);
+		poljeZaSifru.setBorder(BorderFactory.createCompoundBorder(MainWindow.border,
+	            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+		poljeZaNamirnice = new JTextField(dobaviSpisakNamirnica(), 20);
+		poljeZaNamirnice.setBorder(BorderFactory.createCompoundBorder(MainWindow.border,
+	            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+		poljeZaAlate = new JTextField(dobaviSpisakAlata(), 20);
+		poljeZaAlate.setBorder(BorderFactory.createCompoundBorder(MainWindow.border,
+	            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 		
 		//inicijalizacija dugmica
-		potvrdiDugme = new JButton("Potvrdi");
-		odustanakDugme = new JButton("Odustani");
+		potvrdiDugme = new JButton("Potvrdi"){{
+			setContentAreaFilled(false);
+			setBackground(new Color(0, 179, 143));
+			setForeground(new Color(255, 255, 255));
+			setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+			setPreferredSize(new Dimension(78, 36));
+			setOpaque(true);
+		}};
+		odustanakDugme = new JButton("Odustani"){{
+			setContentAreaFilled(false);
+			setBackground(new Color(0, 179, 143));
+			setForeground(new Color(255, 255, 255));
+			setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+			setPreferredSize(new Dimension(78, 36));
+			setOpaque(true);
+		}};
 		
 		/* dodavanje komponenti panelu */
 		
 		//dodavanje labela i text polja
-		panel.add(labelaZaIme);
-		panel.add(poljeZaIme);
+		topLayer.add(labelaZaIme);
+		topLayer.add(poljeZaIme);
 		
-		panel.add(labelaZaPrezime);
-		panel.add(poljeZaPrezime);
+		topLayer.add(labelaZaPrezime);
+		topLayer.add(poljeZaPrezime);
 		
-		panel.add(labelaZaSifru);
-		panel.add(poljeZaSifru);
+		topLayer.add(labelaZaSifru);
+		topLayer.add(poljeZaSifru);
 		
-		panel.add(labelaZaNamirnice);
-		panel.add(poljeZaNamirnice);
+		topLayer.add(labelaZaNamirnice);
+		topLayer.add(poljeZaNamirnice);
 		
-		panel.add(labelaZaAlate);
-		panel.add(poljeZaAlate);
+		topLayer.add(labelaZaAlate);
+		topLayer.add(poljeZaAlate);
 		
 		//dodavanje dugmica
-		panel.add(potvrdiDugme);
-		panel.add(odustanakDugme);
+		bottomLayer.add(potvrdiDugme);
+		bottomLayer.add(odustanakDugme);
+		
+		container.add(topLayer);
+		container.add(bottomLayer);
 		
 		dodajListenere();
 		
-		this.add(panel);
+		this.add(container);
 		this.setVisible(true);
 		
 	}

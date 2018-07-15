@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Namirnica implements Serializable {
 	
 	private static final long serialVersionUID = -3620343728288338333L;
-	private String sifra;
+	private int sifra;
 	private String naziv;
 	private int cena;
 	private boolean validna;
@@ -17,7 +17,7 @@ public class Namirnica implements Serializable {
 		this.validna = false;
 	}
 	
-	public Namirnica(String sifra, String naziv, int cena) {
+	public Namirnica(int sifra, String naziv, int cena) {
 		
 		this.setSifra(sifra);
 		this.naziv = naziv;
@@ -33,11 +33,11 @@ public class Namirnica implements Serializable {
 		this.naziv = naziv;
 	}
 
-	public String getSifra() {
+	public int getSifra() {
 		return sifra;
 	}
 
-	public void setSifra(String sifra) {
+	public void setSifra(int sifra) {
 		this.sifra = sifra;
 	}
 

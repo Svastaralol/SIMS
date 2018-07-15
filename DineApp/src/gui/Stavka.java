@@ -24,6 +24,7 @@ import javax.swing.JTextArea;
 import model.Administrator;
 import model.DineApp;
 import model.Korisnik;
+import model.Namirnica;
 import model.Recepat;
 import model.Sastojak;
 
@@ -79,7 +80,115 @@ public class Stavka extends JPanel {
 		
 	}
 	
+	public Stavka (Namirnica namirnica) {
+		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		this.setPreferredSize(new Dimension(0,200));
+		leftLayer = new JPanel();
+		leftLayer.setBackground(new Color(255, 255, 255));
+		leftLayer.setPreferredSize(new Dimension(-150,0));
+		
+		middleLayer = new JPanel();
+		middleLayer.setLayout(new FlowLayout(FlowLayout.LEFT));
+		middleLayer.setBackground(new Color(255, 255, 255));
+		middleLayer.setPreferredSize(new Dimension(0,0));
+		
+		rightLayer = new JPanel();
+		rightLayer.setLayout(new FlowLayout(FlowLayout.LEFT));
+		rightLayer.setBackground(new Color(255, 255, 255));
+		rightLayer.setPreferredSize(new Dimension(0,0));
+		
+		
+		this.setUpUIKorisnik(namirnica);
+		
+	}
 	
+	
+	public void setUpUIKorisnik(Namirnica namirnica) {
+		BufferedImage image = null;
+		
+		try {
+			image = ImageIO.read(new File("./data/images/utility/food_image.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Image newImage = image.getScaledInstance(130, 130, Image.SCALE_DEFAULT);
+		
+		JLabel picLabel = new JLabel(new ImageIcon(newImage));
+		picLabel.setBorder(BorderFactory.createEmptyBorder(10, 35, 35, 35));
+		
+		leftLayer.add(MainWindow.getNewLine());
+		leftLayer.add(picLabel);
+		
+		
+		JLabel sifra = new JLabel("Sifra namirnice: " + namirnica.getSifra());
+		JLabel naziv = new JLabel("Naziv namirnice: " + namirnica.getNaziv());
+		JLabel cena = new JLabel("Cena namirnice: " + namirnica.getCena());
+		
+		middleLayer.add(sifra);
+		middleLayer.add(MainWindow.getNewLine());
+		middleLayer.add(naziv);
+		middleLayer.add(MainWindow.getNewLine());
+		middleLayer.add(cena);
+		middleLayer.add(MainWindow.getNewLine());
+		
+		middleLayer.add(new JButton("Odobri"){{
+			setContentAreaFilled(false);
+			setBackground(new Color(0, 179, 143));
+			setForeground(new Color(255, 255, 255));
+			setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+			setPreferredSize(new Dimension(96, 26));
+			setOpaque(true);
+			addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					
+					namirnica.setValidna(true);
+					
+					MainWindow.upisNamirnicaUFajl();
+					DineApp.getInstance().mainWindow.sadrzaj.refresNamirnice();
+					
+				}
+				
+			});
+		}});
+		
+		middleLayer.add(new JButton("Obrisi"){{
+			setContentAreaFilled(false);
+			setBackground(new Color(0, 179, 143));
+			setForeground(new Color(255, 255, 255));
+			setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+			setPreferredSize(new Dimension(96, 26));
+			setOpaque(true);
+			addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					
+					for (int i = 0; i < DineApp.namirnice.size(); i++) {
+						if (DineApp.namirnice.get(i).getSifra() == namirnica.getSifra()) {
+							DineApp.namirnice.remove(i);
+							break;
+						}
+					}
+					
+					MainWindow.upisNamirnicaUFajl();
+					DineApp.getInstance().mainWindow.sadrzaj.refresNamirnice();
+					
+				}
+				
+			});
+		}});
+		
+		
+		this.add(leftLayer);
+		this.add(middleLayer);
+		this.add(rightLayer);
+		
+	}
+
 	public void setUpUIKorisnik(Recepat recepat) {
 		BufferedImage image = null;
 		
