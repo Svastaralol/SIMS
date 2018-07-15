@@ -89,7 +89,9 @@ public class DineApp {
 			e1.printStackTrace();
 		}
 		
+		
 		DineApp.getInstance();
+		
 	}
 
 }

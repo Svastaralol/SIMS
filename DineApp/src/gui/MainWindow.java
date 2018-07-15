@@ -6,13 +6,20 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.Border;
+
+import model.DineApp;
+import model.Recepat;
 
 public class MainWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -74,4 +81,16 @@ public class MainWindow extends JFrame {
 		new Logovanje();
 
 	}
+	
+	public static void upisRecepataUFajl() {
+		try {
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./data/files/recepti.sims"));
+			out.writeObject(DineApp.recepti);
+			//JOptionPane.showMessageDialog(null, "Uspesno dodavanje recepta.", "Unos recepta", JOptionPane.INFORMATION_MESSAGE);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 }

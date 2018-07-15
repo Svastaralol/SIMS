@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,13 +19,14 @@ public class Recepat implements Serializable {
 	// private StanjeRecepta stanje;
 	 private List<Sastojak> sastojci;
 	 private StanjeRecepta stanje; //inicijalno izrada
+	 public List<Komentar> komentari;
 	 
 	 
 
 	public Recepat() {
 		 this.ocena = 0;
 		 this.setStanje(new Izrada());
-		 
+		 this.komentari = new ArrayList<Komentar>();
 	 }
 
 	//konstruktor sa parametrima
@@ -104,4 +106,5 @@ public class Recepat implements Serializable {
 	public String toString() {
 		return this.naziv + ", " + this.uputstvo + ", " + this.sastojci;
 	}
+
 }

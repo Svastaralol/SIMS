@@ -32,7 +32,7 @@ import model.Validacija;
 @SuppressWarnings("serial")
 public class KreiranjeRecepta extends JFrame {
 	private int width = 400;
-	private int height = 500;
+	private int height = 410;
 	
 	private JPanel container;
 	private JPanel topLayer;
@@ -120,8 +120,22 @@ public class KreiranjeRecepta extends JFrame {
 		bottomLayer = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		bottomLayer.setBackground(new Color(255, 255, 255));
 		
-		JButton confirmButton = new JButton("Potvrdi");
-		JButton cancelButton = new JButton("Odustani");
+		JButton confirmButton = new JButton("Potvrdi"){{
+			setContentAreaFilled(false);
+			setBackground(new Color(0, 179, 143));
+			setForeground(new Color(255, 255, 255));
+			setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+			setPreferredSize(new Dimension(66, 36));
+			setOpaque(true);
+		}};
+		JButton cancelButton = new JButton("Odustani"){{
+			setContentAreaFilled(false);
+			setBackground(new Color(0, 179, 143));
+			setForeground(new Color(255, 255, 255));
+			setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+			setPreferredSize(new Dimension(66, 36));
+			setOpaque(true);
+		}};
 		
 		KreiranjeRecepta r = this;
 		

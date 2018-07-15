@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -12,6 +14,7 @@ import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -94,11 +97,11 @@ public class Stavka extends JPanel {
 		
 		JLabel naziv = new JLabel(recepat.getNaziv());
 		naziv.setFont(naziv.getFont().deriveFont(16f));
-		JTextArea uputstvo = new JTextArea(5, 23);
+		JTextArea uputstvo = new JTextArea(4, 23);
 		uputstvo.setEditable(false);
 		uputstvo.setLineWrap( true );
 		uputstvo.setText(recepat.getUputstvo());
-		uputstvo.setFont(uputstvo.getFont().deriveFont(12f));
+		uputstvo.setFont(uputstvo.getFont().deriveFont(11f));
 		JLabel kolikoOsoba = new JLabel("Broj osoba:  " + recepat.getKolikoOsoba());
 		
 		JLabel ocena = new JLabel("Svidjanja: " + recepat.getOcena());
@@ -136,16 +139,89 @@ public class Stavka extends JPanel {
 		middleLayer.add(uputstvo);
 		middleLayer.add(MainWindow.getNewLine());
 		middleLayer.add(kolikoOsoba);
+		middleLayer.add(MainWindow.getNewLine());
+		middleLayer.add(ocena);
 		
-		
-		
-		rightLayer.add(ocena);
-		rightLayer.add(MainWindow.getNewLine());
 		rightLayer.add(glavneNamirnice);
 		rightLayer.add(MainWindow.getNewLine());
 		rightLayer.add(opcioneNamirnice);
 		rightLayer.add(MainWindow.getNewLine());
 		rightLayer.add(korisnickoIme);
+		rightLayer.add(MainWindow.getNewLine());
+		
+		rightLayer.add(new JButton("Svidja ti se"){{
+			setContentAreaFilled(false);
+			setBackground(new Color(0, 179, 143));
+			setForeground(new Color(255, 255, 255));
+			setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+			setPreferredSize(new Dimension(155, 26));
+			setOpaque(true);
+			addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					// TODO Auto-generated method stub
+					recepat.setOcena(recepat.getOcena() + 1);
+					MainWindow.upisRecepataUFajl();
+				}
+				
+			});
+		}});
+		
+		rightLayer.add(new JButton("Ne svidja ti se"){{
+			setContentAreaFilled(false);
+			setBackground(new Color(0, 179, 143));
+			setForeground(new Color(255, 255, 255));
+			setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+			setPreferredSize(new Dimension(155, 26));
+			setOpaque(true);
+			addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					// TODO Auto-generated method stub
+					recepat.setOcena(recepat.getOcena() - 1);
+					MainWindow.upisRecepataUFajl();
+				}
+				
+			});
+		}});
+		
+		rightLayer.add(new JButton("Komentarisi"){{
+			setContentAreaFilled(false);
+			setBackground(new Color(0, 179, 143));
+			setForeground(new Color(255, 255, 255));
+			setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+			setPreferredSize(new Dimension(155, 26));
+			setOpaque(true);
+			addActionListener(new ActionListener(){
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					// TODO Auto-generated method stub
+					new Komentarisi(recepat);
+				}
+				
+			});
+		}});
+		
+		rightLayer.add(new JButton("Prikazi sve komentare"){{
+			setContentAreaFilled(false);
+			setBackground(new Color(0, 179, 143));
+			setForeground(new Color(255, 255, 255));
+			setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+			setPreferredSize(new Dimension(155, 26));
+			setOpaque(true);
+			addActionListener(new ActionListener(){
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					// TODO Auto-generated method stub
+					new Komentarisi(recepat);
+				}
+				
+			});
+		}});
 		
 		
 		

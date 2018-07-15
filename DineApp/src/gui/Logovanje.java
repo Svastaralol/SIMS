@@ -25,8 +25,8 @@ import model.Korisnik;
 @SuppressWarnings("serial")
 public class Logovanje extends JFrame {
 	
-	private int width = 400;
-	private int height = 200;
+	private int width = 388;
+	private int height = 185;
 	
 	private JTextField korisnickoIme;
 	private JTextField lozinka;
@@ -36,11 +36,13 @@ public class Logovanje extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(width, height);
 		this.setLocationRelativeTo(null);
+		this.setResizable(false);
 		
 		JPanel container = new JPanel();
 		container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
 		JPanel topLayer = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		topLayer.setBackground(new Color(255,255,255));
+		topLayer.setPreferredSize(new Dimension(0, 0));
 		
 		this.korisnickoIme = new JTextField(30);
 		this.korisnickoIme.setBorder(BorderFactory.createCompoundBorder(MainWindow.border,
@@ -61,9 +63,15 @@ public class Logovanje extends JFrame {
 		topLayer.add(bottomLayer);
 		bottomLayer.setBackground(new Color(255,255,255));
 		
-		JButton logovanjeDugme = new JButton("Uloguj se");
+		JButton logovanjeDugme = new JButton("Uloguj se"){{
+			setContentAreaFilled(false);
+			setBackground(new Color(0, 179, 143));
+			setForeground(new Color(255, 255, 255));
+			setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+			setPreferredSize(new Dimension(66, 36));
+			setOpaque(true);
+		}};
 		logovanjeDugme.addActionListener(new ActionListener(){
-
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				for(Korisnik k: DineApp.korisnici) {
@@ -78,7 +86,7 @@ public class Logovanje extends JFrame {
 							w.container.add(new AlatkeKorisnika());
 							
 						}
-						
+						DineApp.getInstance().ulogovaniKorisnik = k;
 						w.sadrzaj = new Sadrzaj();
 						JScrollPane scrollFrame = new JScrollPane(w.sadrzaj);
 						scrollFrame.getVerticalScrollBar().setUnitIncrement(16);
@@ -92,7 +100,7 @@ public class Logovanje extends JFrame {
 						w.setVisible(true);
 						
 						
-						DineApp.getInstance().ulogovaniKorisnik = k;
+						
 						if (k instanceof Korisnik) {
 							DineApp.getInstance().mainWindow.sadrzaj.ucitajRecepte();
 						}
@@ -105,7 +113,14 @@ public class Logovanje extends JFrame {
 			}
 		});
 		
-		JButton registracijaDugme = new JButton("Registruj se");
+		JButton registracijaDugme = new JButton("Registruj se"){{
+			setContentAreaFilled(false);
+			setBackground(new Color(0, 179, 143));
+			setForeground(new Color(255, 255, 255));
+			setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+			setPreferredSize(new Dimension(78, 36));
+			setOpaque(true);
+		}};
 		registracijaDugme.addActionListener(new ActionListener() {
 
 			@Override
@@ -114,7 +129,14 @@ public class Logovanje extends JFrame {
 			}
 			
 		});
-		JButton odustanakDugme = new JButton("Odustani");
+		JButton odustanakDugme = new JButton("Odustani"){{
+			setContentAreaFilled(false);
+			setBackground(new Color(0, 179, 143));
+			setForeground(new Color(255, 255, 255));
+			setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+			setPreferredSize(new Dimension(65, 36));
+			setOpaque(true);
+		}};
 		odustanakDugme.addActionListener(new ActionListener(){
 
 			@Override

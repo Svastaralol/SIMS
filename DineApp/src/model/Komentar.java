@@ -1,16 +1,20 @@
 package model;
 
-public class Komentar {
+import java.io.Serializable;
+
+public class Komentar implements Serializable{
 	
 	private String naslov;
 	private String opis;
+	private Korisnik korisnik;
 	
 	public Komentar() { }
 	
 
-	public Komentar(String naslov, String opis) {
+	public Komentar(String naslov, String opis, Korisnik korisnik) {
 		this.naslov = naslov;
 		this.opis = opis;
+		this.korisnik = korisnik;
 	}
 
 
@@ -31,6 +35,13 @@ public class Komentar {
 		this.opis = opis;
 	}
 	
-	
+	public Korisnik getKorisnik() {
+		return korisnik;
+	}
+
+
+	public void setKorisnik(Korisnik korisnik) {
+		this.korisnik = korisnik;
+	}
 
 }
