@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -86,6 +88,15 @@ public class SlanjeZahteva extends JFrame {
 				Namirnica n = new Namirnica("", naziv, Integer.parseInt(cena));
 				System.out.println(n.isValidna());
 				DineApp.getInstance().namirnice.add(n);
+				
+				//upis dodate namirnice u fajl(zapravo  se upisu sve namirnice)
+				try {
+					ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./data/files/namirnice.sims"));
+					out.writeObject(DineApp.korisnici);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				
 				SlanjeZahteva.this.dispose();
 			}
