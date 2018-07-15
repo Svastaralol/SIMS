@@ -43,6 +43,7 @@ public class ValidacijaRecepata extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				recepat.setStanje(new Objavljen());
+				MainWindow.upisRecepataUFajl();
 				ValidacijaRecepata.this.dispose();
 			}
 			
@@ -54,6 +55,7 @@ public class ValidacijaRecepata extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				recepat.setStanje(new Otkazan());
+				MainWindow.upisRecepataUFajl();
 				ValidacijaRecepata.this.dispose();
 			}
 			

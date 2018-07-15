@@ -101,8 +101,12 @@ public class Logovanje extends JFrame {
 						
 						
 						
-						if (k instanceof Korisnik) {
-							DineApp.getInstance().mainWindow.sadrzaj.ucitajRecepte();
+						if (k instanceof Administrator) {
+							DineApp.getInstance().mainWindow.sadrzaj.ucitajRecepteAdministrator();
+						}
+						else {
+							DineApp.getInstance().mainWindow.sadrzaj.ucitajRecepteKorisnik();
+							System.out.println("sss");
 						}
 						MainWindow.changeFont(DineApp.getInstance().mainWindow);
 						Logovanje.this.dispose();

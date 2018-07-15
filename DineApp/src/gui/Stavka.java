@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import model.Administrator;
 import model.DineApp;
 import model.Korisnik;
 import model.Recepat;
@@ -150,6 +151,31 @@ public class Stavka extends JPanel {
 		rightLayer.add(korisnickoIme);
 		rightLayer.add(MainWindow.getNewLine());
 		
+		
+		if (DineApp.getInstance().ulogovaniKorisnik instanceof Administrator){
+			rightLayer.add(new JButton("Validacija"){{
+				setContentAreaFilled(false);
+				setBackground(new Color(0, 179, 143));
+				setForeground(new Color(255, 255, 255));
+				setBorder(BorderFactory.createLineBorder(new Color(0, 179, 143)));
+				setPreferredSize(new Dimension(155, 26));
+				setOpaque(true);
+				addActionListener(new ActionListener(){
+
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						new ValidacijaRecepata(recepat);
+						
+						
+					}
+					
+				});
+			}});
+		}
+		
+		
+		else {
 		rightLayer.add(new JButton("Svidja ti se"){{
 			setContentAreaFilled(false);
 			setBackground(new Color(0, 179, 143));
@@ -175,6 +201,7 @@ public class Stavka extends JPanel {
 						DineApp.getInstance().ulogovaniKorisnik.omiljeni.add(recepat);
 						MainWindow.upisRecepataUFajl();
 						MainWindow.upisKorisnikaUFajl();
+						DineApp.getInstance().mainWindow.sadrzaj.refreshRecepteKorisnik();
 					}
 					
 					
@@ -208,6 +235,7 @@ public class Stavka extends JPanel {
 						DineApp.getInstance().ulogovaniKorisnik.neOmiljeni.add(recepat);
 						MainWindow.upisRecepataUFajl();
 						MainWindow.upisKorisnikaUFajl();
+						DineApp.getInstance().mainWindow.sadrzaj.refreshRecepteKorisnik();
 					}
 					System.out.println(DineApp.getInstance().ulogovaniKorisnik.neOmiljeni.size());
 					
@@ -251,7 +279,7 @@ public class Stavka extends JPanel {
 				
 			});
 		}});
-		
+		}
 		
 		
 		

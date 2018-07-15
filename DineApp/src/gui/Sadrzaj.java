@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 
 import model.DineApp;
 import model.Korisnik;
+import model.Objavljen;
 import model.Recepat;
+import model.Validacija;
 
 @SuppressWarnings("serial")
 public class Sadrzaj extends JPanel{
@@ -28,18 +30,50 @@ public class Sadrzaj extends JPanel{
 			i--;
 			
 		}
-		DineApp.getInstance().mainWindow.revalidate();
+		//DineApp.getInstance().mainWindow.revalidate();
 		
 	}
 	
-	public void ucitajRecepte() {
+	public void ucitajRecepteKorisnik() {
 		for (int i = 0; i < DineApp.recepti.size(); i++) {
-			this.add(new Stavka(DineApp.recepti.get(i)));
+			if (DineApp.recepti.get(i).getStanje() instanceof Objavljen) {
+				this.add(new Stavka(DineApp.recepti.get(i)));
+				System.out.println("sss");
+			}
+			
 		}
+		//DineApp.getInstance().mainWindow.revalidate();
+	}
+	
+	public void ucitajRecepteAdministrator() {
+		for (int i = 0; i < DineApp.recepti.size(); i++) {
+			if (DineApp.recepti.get(i).getStanje() instanceof Validacija) {
+				this.add(new Stavka(DineApp.recepti.get(i)));
+			}
+			
+		}
+		//DineApp.getInstance().mainWindow.revalidate();
+	}
+	
+	public void refreshRecepteKorisnik() {
+		this.obrisiSveKomponente();
+		this.ucitajRecepteKorisnik();
+		MainWindow.changeFont(this);
 		DineApp.getInstance().mainWindow.revalidate();
 	}
 	
-	public void refresh() {
+	public void refreshRecepteAdministrator() {
+		this.obrisiSveKomponente();
+		this.ucitajRecepteAdministrator();
+		MainWindow.changeFont(this);
+		DineApp.getInstance().mainWindow.revalidate();
+	}
+	
+	public void refreshKorisnike() {
+		
+	}
+	
+	public void refresNamirnice() {
 		
 	}
 	
