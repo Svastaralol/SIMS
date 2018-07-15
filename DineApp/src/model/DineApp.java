@@ -25,6 +25,9 @@ public class DineApp {
 	public static ArrayList<Recepat> recepti = new ArrayList<>();
 	public List<Namirnica> namirniceZaObradu = new ArrayList<>();
 	
+	public List<Namirnica> validneNamirnice = new ArrayList<Namirnica>();
+	public List<Alat> validniAlati = new ArrayList<Alat>();
+	
 	public Korisnik ulogovaniKorisnik;
 	public MainWindow mainWindow;
 	
