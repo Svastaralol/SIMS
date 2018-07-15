@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -202,6 +204,19 @@ public class Stavka extends JPanel {
 						MainWindow.upisRecepataUFajl();
 						MainWindow.upisKorisnikaUFajl();
 						DineApp.getInstance().mainWindow.sadrzaj.refreshRecepteKorisnik();
+						Timer timer = new Timer();
+						timer.schedule(new TimerTask(){
+							int lastValue = MainWindow.scrollFrame.getVerticalScrollBar().getValue();
+							@Override
+							public void run() {
+								// TODO Auto-generated method stub
+								
+								DineApp.getInstance().mainWindow.sadrzaj.refreshRecepteKorisnik();
+								MainWindow.scrollFrame.getVerticalScrollBar().setValue(lastValue);
+								System.out.println(lastValue);
+							}
+							
+						}, 500);
 					}
 					
 					
@@ -235,7 +250,20 @@ public class Stavka extends JPanel {
 						DineApp.getInstance().ulogovaniKorisnik.neOmiljeni.add(recepat);
 						MainWindow.upisRecepataUFajl();
 						MainWindow.upisKorisnikaUFajl();
-						DineApp.getInstance().mainWindow.sadrzaj.refreshRecepteKorisnik();
+						Timer timer = new Timer();
+						timer.schedule(new TimerTask(){
+							int lastValue = MainWindow.scrollFrame.getVerticalScrollBar().getValue();
+							@Override
+							public void run() {
+								// TODO Auto-generated method stub
+								
+								DineApp.getInstance().mainWindow.sadrzaj.refreshRecepteKorisnik();
+								MainWindow.scrollFrame.getVerticalScrollBar().setValue(lastValue);
+								System.out.println(lastValue);
+							}
+							
+						}, 10);
+						
 					}
 					System.out.println(DineApp.getInstance().ulogovaniKorisnik.neOmiljeni.size());
 					

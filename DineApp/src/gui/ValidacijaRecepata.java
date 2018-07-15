@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.DineApp;
 import model.Objavljen;
 import model.Otkazan;
 import model.Recepat;
@@ -44,7 +45,9 @@ public class ValidacijaRecepata extends JFrame {
 				// TODO Auto-generated method stub
 				recepat.setStanje(new Objavljen());
 				MainWindow.upisRecepataUFajl();
+				
 				ValidacijaRecepata.this.dispose();
+				DineApp.getInstance().mainWindow.sadrzaj.refreshRecepteAdministrator();
 			}
 			
 		});
@@ -56,7 +59,9 @@ public class ValidacijaRecepata extends JFrame {
 				// TODO Auto-generated method stub
 				recepat.setStanje(new Otkazan());
 				MainWindow.upisRecepataUFajl();
+				
 				ValidacijaRecepata.this.dispose();
+				DineApp.getInstance().mainWindow.sadrzaj.refreshRecepteAdministrator();
 			}
 			
 		});

@@ -25,6 +25,7 @@ public class MainWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	public static Border border = BorderFactory.createLineBorder(Color.GRAY);
+	public static JScrollPane scrollFrame;
 	
 	public static Font font;
 	public static JLabel getNewLine() { 

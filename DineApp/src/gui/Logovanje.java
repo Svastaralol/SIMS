@@ -48,6 +48,8 @@ public class Logovanje extends JFrame {
 		this.korisnickoIme.setBorder(BorderFactory.createCompoundBorder(MainWindow.border,
 	            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 		
+		
+		
 		this.lozinka = new JTextField(30);
 		this.lozinka.setBorder(BorderFactory.createCompoundBorder(MainWindow.border,
 	            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
@@ -88,16 +90,16 @@ public class Logovanje extends JFrame {
 						}
 						DineApp.getInstance().ulogovaniKorisnik = k;
 						w.sadrzaj = new Sadrzaj();
-						JScrollPane scrollFrame = new JScrollPane(w.sadrzaj);
-						scrollFrame.getVerticalScrollBar().setUnitIncrement(16);
-						scrollFrame.setVisible(true);
-						scrollFrame.setBorder(BorderFactory.createEmptyBorder());
+						MainWindow.scrollFrame = new JScrollPane(w.sadrzaj);
+						MainWindow.scrollFrame.getVerticalScrollBar().setUnitIncrement(16);
+						MainWindow.scrollFrame.setVisible(true);
+						MainWindow.scrollFrame.setBorder(BorderFactory.createEmptyBorder());
 						w.sadrzaj.setAutoscrolls(true);
-						w.container.add(scrollFrame);
+						w.container.add(MainWindow.scrollFrame);
 						w.add(w.container);
 						w.revalidate();
 						
-						w.setVisible(true);
+						
 						
 						
 						
@@ -108,6 +110,9 @@ public class Logovanje extends JFrame {
 							DineApp.getInstance().mainWindow.sadrzaj.ucitajRecepteKorisnik();
 							System.out.println("sss");
 						}
+						
+						MainWindow.scrollFrame.getVerticalScrollBar().setValue(1);
+						w.setVisible(true);
 						MainWindow.changeFont(DineApp.getInstance().mainWindow);
 						Logovanje.this.dispose();
 						return;
